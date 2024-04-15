@@ -1,0 +1,264 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+video {
+    width: 640px;
+    height: 360px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo img {
+  height: 60px;
+  display: flex;
+  flex-shrink: 0;
+
+  color: #1A1A1A;
+    
+  font-family: "Clash Display";
+  font-size: 30px;
+  font-weight: 60;
+
+  overflow: hidden;
+
+  position: relative;
+    
+}
+
+.header__logo img:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  height: 3px;
+  background-color: #fecd28;
+  animation: slide-in 0.8s linear infinite;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px 1px #fecd28;
+}
+  
+.header__nav {
+  display: flex;
+  justify-content: center;
+}
+  
+.header__nav__ul {
+  display: block;
+  transform: translateY(1000px);
+  position: relative;
+  overflow: hidden;
+  animation: 0.9s titleAnimation cubic-bezier(0.91, 0.14, 0.56, 1.09) forwards;
+}
+  
+@keyframes titleAnimation {
+  to {
+    transform: initial;
+  }
+  }
+
+.header__nav__ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+  
+.header__nav__ul__li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.header__nav__ul__li__a {
+ text-decoration: none;
+text-transform: uppercase;
+color: #1A1A1A;
+
+font-family: "Clash Display";
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+  
+line-height: normal;
+
+position: relative;
+
+}
+
+.header__nav__ul__li__a:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  height: 3px;
+  background-color: #fecd28;
+  animation: slide-in 0.8s linear infinite;
+  border-radius: 60px;
+
+  box-shadow: 0px 0px 2px 1px #fecd28;
+}
+
+@keyframes slide-in {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(100%);
+  }
+}
+
+.header__button {
+  display: flex;
+  padding: 20px 40px;
+  gap: 10px;
+  color: #000000;
+  border-radius: 60px;
+  border: 0;
+  background: #fecd28;
+  box-shadow: 0 1.125em 1em -1em hsl(46, 99%, 58%);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-family: "Clash Display";
+  text-transform: uppercase;
+  line-height: 20px;
+  cursor: pointer;
+  }
+  
+@media screen and (max-width: 650px) {
+  .header__vav {
+    display: none;
+  }
+  .header__button {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+body {
+  margin-top: 56px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+  
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+  
+@font-face {
+  font-family: "Clash Display";
+  src: url("./fonts/ClashDisplay-Variable.woff2") format("woff2-variations"), url("./fonts/ClashDisplay-Variable.woff2") format("woff2") tech("variations");
+}
+
+.main__container_of_cloud {
+  max-width: 900px;
+	width: 100%;
+	background: #fecd28;
+	padding: 30px;
+	border-radius: 30px;
+  position: relative;
+}
+
+.main__container_of_cloud__video_area {
+	width: 100%;
+	height: 700px;
+	margin-bottom: 30px;
+	border-radius: 15px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+  position: relative;
+}
+
+.main__container_of_cloud__video_area .icon {
+	font-size: 100px;
+}
+
+.main__container_of_cloud__video_area__h1 {
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 6px;
+}
+
+.main__container_of_cloud__video_area__p {
+	color: #000000;
+}
+
+.main__container_of_cloud__video_area__p__span {
+	font-weight: 600;
+}
+
+.main__container_of_cloud__video_area video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	z-index: 100;
+}
+
+.main__container_of_cloud__video_area::before {
+	content: attr(data-img);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	color: #000000;
+	font-weight: 500;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	opacity: 0;
+	transition: all .3s ease;
+	z-index: 200;
+}
+
+.main__container_of_cloud__video_area.active:hover::before {
+	opacity: 1;
+}
+
+.main__container_of_cloud__video_area__form__submit {
+	display: block;
+	width: 100%;
+	padding: 16px 0;
+	border-radius: 15px;
+	background: var(--blue);
+	color: #000000;
+	font-weight: 500;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	transition: all .3s ease;
+
+}
