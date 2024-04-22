@@ -11,15 +11,24 @@
 <div class="container">
         
     <header class="header">
-            <div class="header__logo">
-                <img src="./images/logo.png" alt="logo">
+        <div class="all-in-one_logo">
+            <div class="glowing-cricle">
+                <span></span>
+                <span></span>
+                <div class="header__logo">
+                    <img src="./images/logo.png" alt="logo">
+                </div>
             </div>
-            <nav class="header__nav">
-                <ul class="header__nav__ul">
-                    <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="#">Sylclip</a></li>
-                </ul>
-            </nav>
-            <button class="header__button">Commander en Ligne</button>
+        </div>
+
+        <nav class="header__nav">
+            <ul class="header__nav__ul">
+                <li class="header__nav__ul__li">
+                    <a class="header__nav__ul__li__a" href="#">Sylclip</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="header__button">Commander en Ligne</button>
     </header>
 
     <main class="main">

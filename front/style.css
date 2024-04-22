@@ -1,14 +1,36 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --clr-1: #001425;
+  --clr-2: #073438;
+  --clr-3: #0e4b50;
+  --clr-4: #2d8f85;
+  --clr-5: #637c54;
+}
+
+body {
+  background: var(--clr-2);
+
+  place-content: center;
+}
+
 *,
 *::before,
 *::after {
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
 *{
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
@@ -19,39 +41,72 @@ video {
 
 .header {
     display: flex;
+
     justify-content: space-between;
 }
 
-.header__logo img {
-  height: 60px;
-  display: flex;
-  flex-shrink: 0;
+.header__logo {
+  height: 110px;
+  width: 150px;
 
-  color: #1A1A1A;
-    
-  font-family: "Clash Display";
   font-size: 30px;
-  font-weight: 60;
 
-  overflow: hidden;
+  background: var(--clr-1);
+
+  border-radius: 5px;
 
   position: relative;
-    
 }
 
-.header__logo img:after {
+.header__logo::before,
+.header__logo::after {
   content: "";
+
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 80%;
-  height: 3px;
-  background-color: #fecd28;
-  animation: slide-in 0.8s linear infinite;
-  border-radius: 60px;
-  box-shadow: 0px 0px 2px 1px #fecd28;
+
+  inset: -0.5rem;
+  z-index: -1;
+
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+
+  border-radius: inherit;
+
+  animation: rotation 20s linear infinite;
 }
-  
+
+.header__logo::after {
+  filter: blur(3.5rem);
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.header__logo img{
+  height: 110px;
+  width: 150px;
+
+  border-radius: 4px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
 .header__nav {
   display: flex;
   justify-content: center;
@@ -59,9 +114,13 @@ video {
   
 .header__nav__ul {
   display: block;
+
   transform: translateY(1000px);
+
   position: relative;
+
   overflow: hidden;
+
   animation: 0.9s titleAnimation cubic-bezier(0.91, 0.14, 0.56, 1.09) forwards;
 }
   
@@ -73,29 +132,32 @@ video {
 
 .header__nav__ul {
   display: flex;
+
   list-style: none;
+
   justify-content: center;
 }
   
 .header__nav__ul__li {
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
   
 .header__nav__ul__li__a {
- text-decoration: none;
-text-transform: uppercase;
-color: #1A1A1A;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #1A1A1A;
 
-font-family: "Clash Display";
-font-size: 30px;
-font-style: normal;
-font-weight: 500;
-  
-line-height: normal;
+  font-family: "Clash Display";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+    
+  line-height: normal;
 
-position: relative;
+  position: relative;
 
 }
 
