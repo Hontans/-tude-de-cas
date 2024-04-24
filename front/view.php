@@ -29,11 +29,11 @@
         <div class="alb">
             <?php
             include "../back/db_conn.php";
-            $sql = "SELECT * FROM videos ORDER BY id DESC";
-            $res = mysqli_query($conn, $sql);
+            $sql = "SELECT * FROM upload_video ORDER BY id ";
+            $stmt = $conn->query($sql);
 
-            if (mysqli_num_rows($res) > 0) {
-                while ($video = mysqli_fetch_assoc($res)) {
+            if ($stmt->rowCount() > 0) {
+                while ($video = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
 
                     <video src="../uploads/<?=$video['video_url']?>"

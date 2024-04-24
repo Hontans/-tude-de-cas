@@ -1,14 +1,20 @@
+
 <?php
 
-$sname = "localhost";
-$uname = "root";
-$password = "";
+$sql = "SELECT * FROM videos";
 
-$db_name = "test_db";
+    $sname = "localhost";
+    $uname = "root";
+    $password = "";
 
-$conn = mysqli_connect($sname, $uname, $password, $db_name);
+    $db_name = "main";
 
-if (!$conn) {
-    echo "Connection failed!";
-    exit();
+    try {
+        $conn = new PDO("mysql:host=$sname;dbname=$db_name", $uname, $password);
+
+        //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        echo "Column 'publication_date' added successfully";
+    } catch(PDOException $e) {
+        echo "Operation failed: " . $e->getMessage();
 }

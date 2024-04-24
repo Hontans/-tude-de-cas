@@ -5,15 +5,11 @@
 }
 
 :root {
-  --clr-1: #001425;
-  --clr-2: #073438;
-  --clr-3: #0e4b50;
-  --clr-4: #2d8f85;
-  --clr-5: #637c54;
+  --clr-1: #0c1022;
 }
 
 body {
-  background: var(--clr-2);
+  background: var(--clr-1);
 
   place-content: center;
 }
@@ -45,66 +41,97 @@ video {
     justify-content: space-between;
 }
 
-.header__logo {
-  height: 110px;
-  width: 150px;
+.all-in-one_logo{
+    width: 145px;
+    height: 145px;
 
-  font-size: 30px;
+    opacity: 1;
 
-  background: var(--clr-1);
-
-  border-radius: 5px;
-
-  position: relative;
+    animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
+    animation-delay: 2.1s, 3,1s;
 }
 
-.header__logo::before,
-.header__logo::after {
-  content: "";
-
-  position: absolute;
-
-  inset: -0.5rem;
-  z-index: -1;
-
-  background: conic-gradient(
-    from var(--gradient-angle),
-    var(--clr-3),
-    var(--clr-4),
-    var(--clr-5),
-    var(--clr-4),
-    var(--clr-3)
-  );
-
-  border-radius: inherit;
-
-  animation: rotation 20s linear infinite;
+.all-in-one_logo .glowing-cricle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.header__logo::after {
-  filter: blur(3.5rem);
+.all-in-one_logo .glowing-cricle::after {
+    content: '';
+    position: absolute;
+    width: 135px;
+    height: 135px;
+    background: #0c1022;
+    border-radius: 50%;
 }
 
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
+.glowing-cricle .header__logo {
+    position: relative;
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    z-index: 1;
+    overflow: hidden;
 }
 
-.header__logo img{
-  height: 110px;
-  width: 150px;
+.header__logo img {
+    position: absolute;
+    left: 50%;
+    height: 135px;
+    transform: translateX(-50%);
+    max-width: 150px;
+    object-fit: cover;
+    background-color: var(--clr-1);
+}
 
-  border-radius: 4px;
+.glowing-cricle span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#f06, #3cf);
+    border-radius: 50%;
+    animation: circleRotate 5s linear infinite;
+}
 
-  display: flex;
+.glowing-cricle span:nth-child(1) {
+    filter: blur(10px);
+}
 
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-24px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes circleRotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .header__nav {
@@ -148,7 +175,7 @@ video {
 .header__nav__ul__li__a {
   text-decoration: none;
   text-transform: uppercase;
-  color: #1A1A1A;
+  color: #fff;
 
   font-family: "Clash Display";
   font-size: 30px;
@@ -168,11 +195,11 @@ video {
   bottom: 0;
   width: 80%;
   height: 3px;
-  background-color: #fecd28;
+  background: linear-gradient( 90deg, #f06, #3cf);
   animation: slide-in 0.8s linear infinite;
   border-radius: 60px;
 
-  box-shadow: 0px 0px 2px 1px #fecd28;
+  filter: blur(2px);
 }
 
 @keyframes slide-in {
@@ -188,19 +215,21 @@ video {
   display: flex;
   padding: 20px 40px;
   gap: 10px;
-  color: #000000;
+  color: white;
   border-radius: 60px;
   border: 0;
-  background: #fecd28;
-  box-shadow: 0 1.125em 1em -1em hsl(46, 99%, 58%);
+  background: linear-gradient( 90deg, #f06, #3cf);
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
   font-family: "Clash Display";
   text-transform: uppercase;
   line-height: 20px;
   cursor: pointer;
-  }
+}
+
+.header__button::before {
+    filter: blur(5px);
+}
   
 @media screen and (max-width: 650px) {
   .header__vav {
@@ -233,6 +262,15 @@ body {
 @font-face {
   font-family: "Clash Display";
   src: url("./fonts/ClashDisplay-Variable.woff2") format("woff2-variations"), url("./fonts/ClashDisplay-Variable.woff2") format("woff2") tech("variations");
+}
+
+.main__p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-family: "Clash Display";
+    color: white;
+    text-align: center;
 }
 
 .main__container_of_cloud {

@@ -28,7 +28,9 @@
                 </li>
             </ul>
         </nav>
-        <button class="header__button">Commander en Ligne</button>
+        <div class="header__button">
+            <button class="header__button__text">Poster une video</button>
+        </div>
     </header>
 
     <main class="main">
