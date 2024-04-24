@@ -39,6 +39,7 @@ video {
     display: flex;
 
     justify-content: space-between;
+    position: relative;
 }
 
 .all-in-one_logo{
@@ -99,7 +100,7 @@ video {
 }
 
 .glowing-cricle span:nth-child(1) {
-    filter: blur(10px);
+    filter: blur(40px);
 }
 
 @keyframes zoomIn {
@@ -212,23 +213,36 @@ video {
 }
 
 .header__button {
-  display: flex;
-  padding: 20px 40px;
-  gap: 10px;
+    display: inline-flex;
+    height: 60px;
+    width: 260px;
+    justify-content: center;
+    align-items: center;
   color: white;
   border-radius: 60px;
   border: 0;
   background: linear-gradient( 90deg, #f06, #3cf);
-  font-size: 16px;
-  font-style: normal;
-  font-family: "Clash Display";
-  text-transform: uppercase;
-  line-height: 20px;
   cursor: pointer;
+    font-family: "Clash Display Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+    position: relative;
 }
 
 .header__button::before {
-    filter: blur(5px);
+    position: absolute;
+    content: "";
+    top: -10px; /* Adjust these values */
+    left: -10px; /* Adjust these values */
+    right: -10px; /* Adjust these values */
+    bottom: -10px; /* Adjust these values */
+    background: inherit;
+    filter: blur(60px);
+    z-index: -1;
+    border-radius: 60px;
 }
   
 @media screen and (max-width: 650px) {

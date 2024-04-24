@@ -28,9 +28,7 @@
                 </li>
             </ul>
         </nav>
-        <div class="header__button">
-            <button class="header__button__text">Poster une video</button>
-        </div>
+        <button class="header__button">Poster une video</button>
     </header>
 
     <main class="main">
