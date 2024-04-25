@@ -1,7 +1,7 @@
 <?php
 include 'utills.php';
-if (isset($_POST['submit']) && isset ($_FILES['my_video'])) {
-    include "db_conn.php";
+include "db_conn.php";
+if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
     $video_name = $_FILES['my_video']['name'];
     $tmp_name = $_FILES['my_video']['tmp_name'];
     $error = $_FILES['my_video']['error'];
@@ -27,10 +27,7 @@ if (isset($_POST['submit']) && isset ($_FILES['my_video'])) {
             header("Location: ../front/view.php");
         }else {
             $em = "You can't upload files of this type";
-            header("Location: ../front/index.php?error=$em");
+            header("Location: ../front/view.php?error=$em");
         }
     }
-
-}else{
-    header("Location: ../front/index.php");
 }

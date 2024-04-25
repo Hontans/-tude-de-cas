@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sylclip</title>
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.1.5/build/spline-viewer.js"></script>
 </head>
 <body>
+
 <div class="container">
-        
+
     <header class="header">
         <div class="all-in-one_logo">
             <div class="glowing-cricle">
@@ -21,29 +22,66 @@
             </div>
         </div>
 
-        <nav class="header__nav">
-            <ul class="header__nav__ul">
-                <li class="header__nav__ul__li">
-                    <a class="header__nav__ul__li__a" href="#">Sylclip</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="titre">
+            <h1 class="header__h1">Sylclip</h1>
+        </div>
+
         <button class="header__button">Poster une video</button>
     </header>
 
     <main class="main">
-        <p class="main__p">Slyclip est site qui vise à maitre en aven vau clip
-            vidéo et extrait de vau moment les plus drôles.</p>
-        <a class="main__a" href="view.php">UPLOAD</a>
-        <?php if (isset($_GET['error'])) { ?>
+
+        <p class="main__p">Slyclip est un site qui vise à mettre en avant vos clips<br> vidéo et extraits des moments les plus drôles.</p>
+        
+        <div class="video_view">
+            
+            <div class="next">
+                <button class="btn_next">
+                    <img src="images/next.png" alt="next">
+                </button>
+            </div>
+                
+            <video id="video" controls>
+                <source src="../uploads/test.mp4">
+            </video>
+
+            <div class="back">
+                <button class="btn_back">
+                    <img src="images/back.png" alt="back">
+                </button>
+            </div>
+
+        </div>
+            
+        <?php /*if (isset($_GET['error'])) { ?>
         <p><?=$_GET['error']?></p>
         <?php } ?>
-        
+        <div class="alb">
+            <?php
+            include "../back/db_conn.php";
+            $sql = "SELECT * FROM upload_video ORDER BY id ";
+            $stmt = $conn->query($sql);
+
+            if ($stmt->rowCount() > 0) {
+                while ($video = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+
+                    <video src="../uploads/<?=$video['video_url']?>"
+                           controls>
+
+                    </video>
+
+                    <?php
+                }
+            }else {
+                echo "<h1>Empty</h1>";
+            }*/
+            ?>
+        </div>
         <div class="main__container_of_cloud">
             <div class="main__container_of_cloud__video_area">
                 <i class='bx bxs-cloud-upload icon'></i>
                 <h1 class="main__container_of_cloud__video_area__h1">Poster ma video</h1>
-                <p class="main__container_of_cloud__video_area__p">Video trop grose <span class="main__container_of_cloud__video_area__p__span">1G</span></p>
                 <form class="main__container_of_cloud__video_area__form" action="../back/upload.php" method="post" enctype="multipart/form-data">
                     <div>
                         <label class="main__container_of_cloud__video_area__label" for="video_uploads">Sélectionne ta video</label>
