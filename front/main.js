@@ -1,45 +1,33 @@
-class Carousel {
-    constructor(element, options = {}) {
-        this.element= element
-        this.options = Object.assign({}, {
-            slidesToScroll: 1,
-            slidesVisible: 1,
-        }, options)
-        let children = [].slice.call (element.children)
-        let root = this.createDivWithclass('carousel')
-        this.container = this.createDivWithclass('carousel__container')
-        root.appendChild(this.container)
-        this.element.appendChild(root)
-        this.items = children.map((child) => {
-            let item = this.createDivWithclass('carousel__item')
-            item.appendChild(child)
-            this.container.appendChild(item)
-            return item
-        })
-        this.setStyle()
-        this.createNavigation()
-    }
+// Sélection des éléments nécessaires dans le DOM
+const container = document.querySelector('.item');
+const btn_next = document.querySelector('.btn_next');
+const btn_back = document.querySelector('.btn_back');
+const slides = document.querySelector('.item video');
+const videos = document.querySelectorAll('.item video');
 
-    setStyle () {
-        let ratio = this.items.length / this.options.slidesVisible
-        this.container.style.width = (ratio * 100) + '%'
-        this.items.forEach(item => item.style.width = ((100 / this.options.slidesVisible) / ratio) + "%")
-    }
-
-    createNavigation () {
-
-    }
-
-    createDivWithclass(className) {
-        let div = document.createElement('div')
-        div.setAttribute('class', className)
-        return div
-    }
+// Fonction pour arrêter toutes les vidéos
+function stopAllVideos() {
+    // Parcourir chaque vidéo
+    videos.forEach(video => {
+        // Mettre en pause la vidéo
+        video.pause();
+        // Réinitialiser le temps de la vidéo à 0
+        video.currentTime = 0;
+    });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    new Carousel(document.querySelector('#carousel'), {
-        slidesToScroll: 1,
-        slidesVisible: 1,
-    })
+// Ajout d'un écouteur d'événements au bouton suivant
+btn_next.addEventListener('click', () => {
+    // Arrêter toutes les vidéos
+    stopAllVideos();
+    // Faire défiler le conteneur vers la droite
+    container.scrollLeft += slides.clientWidth;
+})
+
+// Ajout d'un écouteur d'événements au bouton précédent
+btn_back.addEventListener('click', () => {
+    // Arrêter toutes les vidéos
+    stopAllVideos();
+    // Faire défiler le conteneur vers la gauche
+    container.scrollLeft -= slides.clientWidth;
 })

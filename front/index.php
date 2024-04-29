@@ -6,11 +6,24 @@
     <title>Sylclip</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.1.5/build/spline-viewer.js"></script>
-    <script src="./main.js"></script>
+    <script defer src="./main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 
-<div class="container">
+<div class="container_mais_pas_de_tailwind">
 
     <header class="header">
         <div class="all-in-one_logo">
@@ -23,30 +36,21 @@
             </div>
         </div>
 
-        <div class="titre">
             <h1 class="header__h1">Sylclip</h1>
-        </div>
 
-        <button class="header__button">Poster une video</button>
+        <a href="#cloud" class="header__button">Poster une video</a>
     </header>
 
     <main class="main">
 
         <p class="main__p">Slyclip est un site qui vise à mettre en avant vos clips<br> vidéo et extraits des moments les plus drôles.</p>
 
-        <div class="carousel">
-            <div class="carousel__panorama">
-                <div class="item"></div>
-            </div>
-        </div>
-
         <div id="carousel">
             
-            <div class="next">
-                <button class="btn_next">
-                    <img src="images/next.png" alt="next">
-                </button>
-            </div>
+
+            <button class="btn_next">
+                <img src="images/next.png" alt="next">
+            </button>
 
             <div class="item">
                 <?php
@@ -69,11 +73,9 @@
                 ?>
             </div>
 
-            <div class="back">
-                <button class="btn_back">
-                    <img src="images/back.png" alt="back">
-                </button>
-            </div>
+            <button class="btn_back">
+                <img src="images/back.png" alt="back">
+            </button>
 
         </div>
             
@@ -81,18 +83,15 @@
         <p><?=$_GET['error']?></p>
         <?php } ?>
 
-        <div class="main__container_of_cloud">
+        <div class="main__container_of_cloud" id="cloud">
             <div class="main__container_of_cloud__video_area">
-                <i class='bx bxs-cloud-upload icon'></i>
                 <h1 class="main__container_of_cloud__video_area__h1">Poster ma video</h1>
                 <form class="main__container_of_cloud__video_area__form" action="../back/upload.php" method="post" enctype="multipart/form-data">
                     <div>
-                        <label class="main__container_of_cloud__video_area__label" for="video_uploads">Sélectionne ta video</label>
+<!--                        <label class="main__container_of_cloud__video_area__label" for="video_uploads">Sélectionne ta video</label>-->
                         <input type="file" id="video_uploads" name="my_video"/>
                     </div>
-                    <div class="main__container_of_cloud__video_area__form__preview">
-                        <p class="main__container_of_cloud__video_area__form__preview__p">Aucun fichier sélectionné pour le moment</p>
-                    </div>
+<!--                    <p class="main__container_of_cloud__video_area__form__preview__p">Aucun fichier sélectionné pour le moment</p>-->
                     <button class="main__container_of_cloud__video_area__form__submit" type="submit" name="submit" value="Upload">Envoyer</button>
                 </form>
             </div>
