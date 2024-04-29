@@ -6,6 +6,7 @@
     <title>Sylclip</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.1.5/build/spline-viewer.js"></script>
+    <script src="./main.js"></script>
 </head>
 <body>
 
@@ -32,18 +33,41 @@
     <main class="main">
 
         <p class="main__p">Slyclip est un site qui vise à mettre en avant vos clips<br> vidéo et extraits des moments les plus drôles.</p>
-        
-        <div class="video_view">
+
+        <div class="carousel">
+            <div class="carousel__panorama">
+                <div class="item"></div>
+            </div>
+        </div>
+
+        <div id="carousel">
             
             <div class="next">
                 <button class="btn_next">
                     <img src="images/next.png" alt="next">
                 </button>
             </div>
-                
-            <video id="video" controls>
-                <source src="../uploads/test.mp4">
-            </video>
+
+            <div class="item">
+                <?php
+                include "../back/db_conn.php";
+                $sql = "SELECT * FROM upload_video ORDER BY `like` DESC LIMIT 20";
+                $stmt = $conn->query($sql);
+
+                if ($stmt->rowCount() > 0) {
+                    while ($video = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+
+                        <video src="../uploads/<?=$video['id'] . '.' . $video['extension']?>"
+                               controls>
+
+                        </video>
+
+                        <?php
+                    }
+                }
+                ?>
+            </div>
 
             <div class="back">
                 <button class="btn_back">
@@ -53,31 +77,10 @@
 
         </div>
             
-        <?php /*if (isset($_GET['error'])) { ?>
+        <?php if (isset($_GET['error'])) { ?>
         <p><?=$_GET['error']?></p>
         <?php } ?>
-        <div class="alb">
-            <?php
-            include "../back/db_conn.php";
-            $sql = "SELECT * FROM upload_video ORDER BY id ";
-            $stmt = $conn->query($sql);
 
-            if ($stmt->rowCount() > 0) {
-                while ($video = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-
-                    <video src="../uploads/<?=$video['video_url']?>"
-                           controls>
-
-                    </video>
-
-                    <?php
-                }
-            }else {
-                echo "<h1>Empty</h1>";
-            }*/
-            ?>
-        </div>
         <div class="main__container_of_cloud">
             <div class="main__container_of_cloud__video_area">
                 <i class='bx bxs-cloud-upload icon'></i>
@@ -97,6 +100,5 @@
     </main>
 
 </div>
-<script src="./js/upload.js"></script>
 </body>
 </html>
