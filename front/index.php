@@ -36,7 +36,7 @@
             </div>
         </div>
 
-            <h1 class="header__h1">Sylclip</h1>
+            <h1 data-text="Sylclip" class="header__h1">Sylclip</h1>
 
         <a href="#cloud" class="header__button">Poster une video</a>
     </header>
@@ -49,7 +49,7 @@
             
 
             <button class="btn_next">
-                <img src="images/next.png" alt="next">
+                <img src="images/next.svg" alt="next">
             </button>
 
             <div class="item">
@@ -74,7 +74,7 @@
             </div>
 
             <button class="btn_back">
-                <img src="images/back.png" alt="back">
+                <img src="images/back.svg" alt="back">
             </button>
 
         </div>
