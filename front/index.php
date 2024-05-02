@@ -21,32 +21,34 @@
         }
     </script>
 </head>
+
+
+
 <body>
 
-<div class="container_mais_pas_de_tailwind">
+<div class="wrap">
 
-    <header class="header">
-        <div class="all-in-one_logo">
+    <header class="flex justify-between items-center relative">
+        <div class="logo">
             <div class="glowing-cricle">
                 <span></span>
                 <span></span>
-                <div class="header__logo">
+                <div class="header-logo">
                     <img src="./images/logo.png" alt="logo">
                 </div>
             </div>
         </div>
 
-            <h1 data-text="Sylclip" class="header__h1">Sylclip</h1>
+            <h1 data-text="Sylclip">Sylclip</h1>
 
-        <a href="#cloud" class="header__button">Poster une video</a>
+        <a href="#cloud" class="header-btn">Poster une video</a>
     </header>
 
     <main class="main">
 
-        <p class="main__p">Slyclip est un site qui vise à mettre en avant vos clips<br> vidéo et extraits des moments les plus drôles.</p>
+        <p>Slyclip est un site qui vise à mettre en avant vos clips<br> vidéo et extraits des moments les plus drôles.</p>
 
         <div id="carousel">
-            
 
             <button class="btn_next">
                 <img src="images/next.svg" alt="next">
@@ -83,17 +85,18 @@
         <p><?=$_GET['error']?></p>
         <?php } ?>
 
-        <div class="main__container_of_cloud" id="cloud">
-            <div class="main__container_of_cloud__video_area">
-                <h1 class="main__container_of_cloud__video_area__h1">Poster ma video</h1>
-                <form class="main__container_of_cloud__video_area__form" action="../back/upload.php" method="post" enctype="multipart/form-data">
-                    <div>
-<!--                        <label class="main__container_of_cloud__video_area__label" for="video_uploads">Sélectionne ta video</label>-->
+        <div class="cloud--wraper" id="cloud">
+            <div class="cloud-gb">
+                <form class="upload" action="../back/upload.php" method="post" enctype="multipart/form-data" draggable="true">
+                    <div class="upload-input">
+                        <label for="video_uploads" ><img src="images/cloud.svg" alt="back">Poster ma video</label>
                         <input type="file" id="video_uploads" name="my_video"/>
                     </div>
-<!--                    <p class="main__container_of_cloud__video_area__form__preview__p">Aucun fichier sélectionné pour le moment</p>-->
-                    <button class="main__container_of_cloud__video_area__form__submit" type="submit" name="submit" value="Upload">Envoyer</button>
+                    <p class="no">Aucun fichier sélectionné pour le moment</p>
+                    <p class="yes">Votre fichier a bien été sélectioner</p>
+                    <button class="upload-btn" type="submit" name="submit" value="Upload">Envoyer</button>
                 </form>
+                <div id="drop-zone"/>
             </div>
         </div>
     </main>

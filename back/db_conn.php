@@ -3,8 +3,8 @@
 // Définir les informations de connexion à la base de données
 $name = "localhost";
 $username = "root";
-$password = "";
-$db_name = "sylclip";
+$password = "root";
+$db_name = "main";
 
 // Essayer de se connecter à la base de données
 try {
