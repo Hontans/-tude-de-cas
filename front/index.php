@@ -26,7 +26,7 @@
 
 <body>
 
-<div class="wrap">
+<div class="wrap"  id="drop-zone">
 
     <header class="flex justify-between items-center relative">
         <div class="logo">
@@ -94,9 +94,11 @@
                     </div>
                     <p class="no">Aucun fichier sélectionné pour le moment</p>
                     <p class="yes">Votre fichier a bien été sélectioner</p>
-                    <button class="upload-btn" type="submit" name="submit" value="Upload">Envoyer</button>
+                    <div class="button-container">
+                        <button class="upload-btn left" type="reset">Supprimer</button>
+                        <button class="upload-btn right" type="submit" name="submit" value="Upload">Envoyer</button>
+                    </div>
                 </form>
-                <div id="drop-zone"/>
             </div>
         </div>
     </main>

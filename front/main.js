@@ -8,6 +8,8 @@ const videos = document.querySelectorAll('.item video');
 const fileInput = document.getElementById('video_uploads');
 const paragraph = document.querySelector('.no');
 const paragraph2 = document.querySelector('.yes');
+// Select the drop zone element
+const dropZone = document.getElementById('drop-zone');
 
 
 // Fonction pour arrêter toutes les vidéos
@@ -53,4 +55,26 @@ fileInput.addEventListener('change', function() {
         paragraph.style.display = 'block';
         paragraph2.style.display = 'none';
     }
+});
+
+
+// Add event listener for dragover event
+dropZone.addEventListener('dragover', function(event) {
+    // Prevent default behavior to allow dropping
+    event.preventDefault();
+});
+
+// Add event listener for drop event
+dropZone.addEventListener('drop', function(event) {
+    // Prevent default behavior
+    event.preventDefault();
+
+    // Get the files from the event
+    const files = event.dataTransfer.files;
+
+    // Set the files as the value of the file input
+    fileInput.files = files;
+
+    // Trigger change event
+    fileInput.dispatchEvent(new Event('change'));
 });
