@@ -1,19 +1,17 @@
 // Sélection des éléments nécessaires dans le DOM
-const container = document.querySelector('.item');
-const btn_next = document.querySelector('.btn_next');
-const btn_back = document.querySelector('.btn_back');
-const slides = document.querySelector('.item video');
+const conteneur = document.querySelector('.item');
+const btn_suivant = document.querySelector('.btn_next');
+const btn_precedent = document.querySelector('.btn_back');
+const diapositives = document.querySelector('.item video');
 const videos = document.querySelectorAll('.item video');
-// Sélectionnez l'élément d'entrée de fichier et le paragraphe
-const fileInput = document.getElementById('video_uploads');
-const paragraph = document.querySelector('.no');
-const paragraph2 = document.querySelector('.yes');
-// Select the drop zone element
-const dropZone = document.getElementById('drop-zone');
-
+const inputFichier = document.getElementById('video_uploads');
+const paragraphe1 = document.querySelector('.no');
+const paragraphe2 = document.querySelector('.yes');
+const zoneDepot = document.getElementById('drop-zone');
+const boutonSupprimer = document.querySelector('.upload-btn.left');
 
 // Fonction pour arrêter toutes les vidéos
-function stopAllVideos() {
+function arreterToutesLesVideos() {
     // Parcourir chaque vidéo
     videos.forEach(video => {
         // Mettre en pause la vidéo
@@ -23,58 +21,63 @@ function stopAllVideos() {
     });
 }
 
-
 // Ajout d'un écouteur d'événements au bouton suivant
-btn_next.addEventListener('click', () => {
+btn_suivant.addEventListener('click', () => {
     // Arrêter toutes les vidéos
-    stopAllVideos();
+    arreterToutesLesVideos();
     // Faire défiler le conteneur vers la droite
-    container.scrollLeft += slides.clientWidth;
+    conteneur.scrollLeft += diapositives.clientWidth;
 })
-
 
 // Ajout d'un écouteur d'événements au bouton précédent
-btn_back.addEventListener('click', () => {
+btn_precedent.addEventListener('click', () => {
     // Arrêter toutes les vidéos
-    stopAllVideos();
+    arreterToutesLesVideos();
     // Faire défiler le conteneur vers la gauche
-    container.scrollLeft -= slides.clientWidth;
+    conteneur.scrollLeft -= diapositives.clientWidth;
 })
 
-
 // Ajoutez un écouteur d'événements pour l'événement de changement sur l'élément d'entrée de fichier
-fileInput.addEventListener('change', function() {
+inputFichier.addEventListener('change', function() {
     // Si un fichier est sélectionné
-    if (fileInput.files.length > 0) {
+    if (inputFichier.files.length > 0) {
         // Cachez le paragraphe1
-        paragraph.style.display = 'none';
-        paragraph2.style.display = 'block';
+        paragraphe1.style.display = 'none';
+        paragraphe2.style.display = 'block';
 
     } else {
         // Sinon, affichez le paragraphe2
-        paragraph.style.display = 'block';
-        paragraph2.style.display = 'none';
+        paragraphe1.style.display = 'block';
+        paragraphe2.style.display = 'none';
     }
 });
 
-
-// Add event listener for dragover event
-dropZone.addEventListener('dragover', function(event) {
-    // Prevent default behavior to allow dropping
+// Ajoutez un écouteur d'événements pour l'événement de glissement sur la zone de dépôt
+zoneDepot.addEventListener('dragover', function(event) {
+    // Empêcher le comportement par défaut pour permettre le dépôt
     event.preventDefault();
 });
 
-// Add event listener for drop event
-dropZone.addEventListener('drop', function(event) {
-    // Prevent default behavior
+// Ajoutez un écouteur d'événements pour l'événement de dépôt sur la zone de dépôt
+zoneDepot.addEventListener('drop', function(event) {
+    // Empêcher le comportement par défaut
     event.preventDefault();
 
-    // Get the files from the event
-    const files = event.dataTransfer.files;
+    // Obtenir les fichiers de l'événement
+    const fichiers = event.dataTransfer.files;
 
-    // Set the files as the value of the file input
-    fileInput.files = files;
+    // Définir les fichiers comme la valeur de l'entrée de fichier
+    inputFichier.files = fichiers;
 
-    // Trigger change event
-    fileInput.dispatchEvent(new Event('change'));
+    // Déclencher l'événement de changement
+    inputFichier.dispatchEvent(new Event('change'));
+});
+
+// Ajoutez un écouteur d'événements pour l'événement click sur le bouton Supprimer
+boutonSupprimer.addEventListener('click', function() {
+    // Réinitialisez l'élément d'entrée de fichier
+    inputFichier.value = '';
+    // Réinitialisez le paragraphe
+    paragraphe1.style.display = 'block';
+    paragraphe2.style.display = 'none';
 });

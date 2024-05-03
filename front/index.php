@@ -86,8 +86,8 @@
         <?php } ?>
 
         <div class="cloud--wraper" id="cloud">
-            <div class="cloud-gb">
-                <form class="upload" action="../back/upload.php" method="post" enctype="multipart/form-data" draggable="true">
+            <div class="cloud-bg">
+                <form class="upload" action="../back/upload.php" method="post" enctype="multipart/form-data">
                     <div class="upload-input">
                         <label for="video_uploads" ><img src="images/cloud.svg" alt="back">Poster ma video</label>
                         <input type="file" id="video_uploads" name="my_video"/>
@@ -95,7 +95,7 @@
                     <p class="no">Aucun fichier sélectionné pour le moment</p>
                     <p class="yes">Votre fichier a bien été sélectioner</p>
                     <div class="button-container">
-                        <button class="upload-btn left" type="reset">Supprimer</button>
+                        <button class="upload-btn left" type="reset" >Supprimer</button>
                         <button class="upload-btn right" type="submit" name="submit" value="Upload">Envoyer</button>
                     </div>
                 </form>
