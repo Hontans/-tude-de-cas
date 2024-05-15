@@ -8,8 +8,7 @@ if (isset($_POST['submit'])) {
     // Vérifier si un fichier a été téléchargé
     if (empty($_FILES['my_video']['size'])) {
         // Rediriger l'utilisateur vers la page d'accueil avec un message d'erreur
-        $em = "Aucun fichier sélectionné";
-        header("Location: ../front/index.php?error=$em");
+        header("Location: ../front/index.php?");
         die;
     }
 

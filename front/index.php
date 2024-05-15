@@ -82,7 +82,7 @@
         </div>
             
         <?php if (isset($_GET['error'])) { ?>
-        <p><?=$_GET['error']?></p>
+
         <?php } ?>
 
         <div class="cloud--wraper" id="cloud">
