@@ -3,21 +3,29 @@
 include 'utills.php';
 include "db_conn.php";
 
-// Vérifier si le formulaire a été soumis et si un fichier a été téléchargé
-if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
+// Vérifier si le formulaire a été soumis
+if (isset($_POST['submit'])) {
+    // Vérifier si un fichier a été téléchargé
+    if (empty($_FILES['my_video']['size'])) {
+        // Rediriger l'utilisateur vers la page d'accueil avec un message d'erreur
+        $em = "Aucun fichier sélectionné";
+        header("Location: ../front/index.php?error=$em");
+        die;
+    }
+
     // Récupérer les informations du fichier téléchargé
     $video_name = $_FILES['my_video']['name'];
     $tmp_name = $_FILES['my_video']['tmp_name'];
     $error = $_FILES['my_video']['error'];
 
-    // Afficher le nom du fichier
-    var_dump($video_name);
+//    // Afficher le nom du fichier
+//    var_dump($video_name);
 
-    // Si une erreur s'est produite lors du téléchargement du fichier, afficher l'erreur et arrêter l'exécution du script
-    if ($error){
-        var_dump($error);
-        die;
-    }
+//    // Si une erreur s'est produite lors du téléchargement du fichier, afficher l'erreur et arrêter l'exécution du script
+//    if ($error){
+//        var_dump($error);
+//        die;
+//    }
 
     // Si aucune erreur ne s'est produite lors du téléchargement du fichier
     if ($error === 0) {
@@ -43,7 +51,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
 
             // Rediriger l'utilisateur vers la page d'accueil
             header("Location: ../front/index.php");
-        }else {
+        } else {
             // Si l'extension du fichier n'est pas autorisée, rediriger l'utilisateur vers la page d'accueil avec un message d'erreur
             $em = "You can't upload files of this type";
             header("Location: ../front/index.php?error=$em");
